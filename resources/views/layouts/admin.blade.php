@@ -415,59 +415,7 @@
         <script src="{{ asset('js/apexcharts/apexcharts.js') }}"></script>
         <script src="{{ asset('js/main.js') }}"></script>
        
-        <script>
-            var chartDataTotal = @json($dataTotal);
         
-            (function ($) {
-                var tfLineChart = (function () {
-                    var chartBar = function () {
-                        var options = {
-                            series: [{
-                                name: 'Total',
-                                data: chartDataTotal
-                            }],
-                            chart: {
-                                type: 'bar',
-                                height: 325,
-                                toolbar: { show: false },
-                            },
-                            plotOptions: {
-                                bar: {
-                                    horizontal: false,
-                                    columnWidth: '10px',
-                                    endingShape: 'rounded'
-                                }
-                            },
-                            xaxis: {
-                                categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
-                                             'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-                            },
-                            colors: ['#2377FC'],
-                            tooltip: {
-                                y: {
-                                    formatter: function (val) {
-                                        return "$ " + val;
-                                    }
-                                }
-                            }
-                        };
-        
-                        var chart = new ApexCharts(document.querySelector("#line-chart-8"), options);
-                        chart.render();
-                    };
-        
-                    return {
-                        load: function () {
-                            chartBar();
-                        }
-                    };
-                })();
-        
-                $(window).on("load", function () {
-                    tfLineChart.load();
-                });
-            })(jQuery);
-        </script>
         @stack('scripts')
     </body>
 </html>
